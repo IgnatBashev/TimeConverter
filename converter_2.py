@@ -1,7 +1,6 @@
 from astropy.time import Time
 import tkinter as tk
 from tkinter import filedialog, messagebox
-from tkinter import ttk
 
 
 class Converter:
@@ -40,8 +39,8 @@ class Converter:
 
         return formatted_time
 
-    def run(self):
-        self.work_with_file()
+    # def run(self):
+    #     self.work_with_file()
 
 
 def main():
@@ -69,7 +68,7 @@ def main():
     output_frame = tk.Frame(root)
     output_frame.pack(padx=10, pady=10)
 
-    ttk.Label(output_frame, text="Output File").pack(side=tk.LEFT)
+    tk.Label(output_frame, text="Output File").pack(side=tk.LEFT)
     output_var = tk.StringVar()
     output_entry = tk.Entry(output_frame, textvariable=output_var)
     output_entry.pack(side=tk.LEFT)
@@ -95,8 +94,29 @@ def main():
         else:
             messagebox.showerror("Error", "Please select both input and output files.")
 
-    root.mainloop()
+    # layout = [
+    #     [sg.Text("Input File"), sg.Input(key="-INFILE-"), sg.FileBrowse()],
+    #     [sg.Text("Output File"), sg.Input(key="-OUTFILE-"), sg.FileSaveAs()],
+    #     [sg.Button("Convert"), sg.Button("Exit")]
+    # ]
+    #
+    # window = sg.Window("GPS Time Converter", layout)
+    # while True:
+    #     event, values = window.read()
+    #     if event == sg.WINDOW_CLOSED or event == "Exit":
+    #         break
+    #     elif event == "Convert":
+    #         infile = values["-INFILE-"]
+    #         outfile = values["-OUTFILE-"]
+    #         if infile and outfile:
+    #             converter = Converter(infile=infile, outfile=outfile)
+    #             converter.run()
+    #         else:
+    #             sg.popup("Please select both input and output files.")
+    #
+    # window.close()
 
 
 if __name__ == '__main__':
+    # import PySimpleGUI as sg
     main()
