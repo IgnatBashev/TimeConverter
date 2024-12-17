@@ -14,17 +14,17 @@ class Converter:
         try:
 
             with open(file=self.infile, mode='r', encoding='utf-8') as infile, open(file=self.outfile, mode='w', encoding='utf-8') as outfile:
-                outfile.write('Column1 Column2 Column3 Column4 GPS_Time\n')
+                outfile.write('Column1 Column2 Column3 Column4 Column5 GPS_Time\n')
                 for line in infile:
                     columns = line.strip().split()
 
-                    if len(columns) < 4:
-                        print(f"Skipping line with less than 4 columns: {line.strip()}")
+                    if len(columns) < 5:
+                        print(f"Skipping line with less than 5 columns: {line.strip()}")
                         continue
 
                     minutes_from_1980 = float(columns[0])
                     formatted_time = self.gps_time_to_hhmmss(minutes_from_1980)
-                    outfile.write(f'{columns[0]} {columns[1]} {columns[2]} {columns[3]} {formatted_time}\n')
+                    outfile.write(f'{columns[0]} {columns[1]} {columns[2]} {columns[3]} {columns[4]} {formatted_time}\n')
 
         except FileNotFoundError:
             print(f"Input file '{self.infile}' not found.")
