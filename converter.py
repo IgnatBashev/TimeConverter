@@ -58,7 +58,7 @@ def main():
     input_entry.pack(side=tk.LEFT)
 
     def select_input_file():
-        file_path = filedialog.askopenfilename(title="Select Input File", filetypes=[("Text files", "*.txt")])
+        file_path = filedialog.askopenfilename(title="Select Input File", filetypes=[("All files", '*.*')])
         if file_path:
             input_var.set(file_path)
 
